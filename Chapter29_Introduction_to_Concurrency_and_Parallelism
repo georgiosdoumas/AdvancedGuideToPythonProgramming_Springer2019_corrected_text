@@ -1,0 +1,53 @@
+29.1 Introduction
+In this chapter we will introduce the concepts of concurrency and parallelism. We
+will also briefly consider the related topic of distribution. After this we will consider
+process synchronisation, why object oriented approaches are well suited to con-
+currency and parallelism before finishing with a short discussion of threads versus
+processes.
+
+29.2 Concurrency
+Concurrency is defined by the dictionary as
+two or more events or circumstances happening or existing at the same time.
+In Computer Science concurrency refers to the ability of different parts or units of a
+program, algorithm or problem to be executed at the same time, potentially on
+multiple processors or multiple cores.
+Here a processor refers to the central processing unit (or CPU) of a computer
+while core refers to the idea that a CPU chip can have multiple cores or processors
+on it.
+Originally a CPU chip had a single core. That is the CPU chip had a single
+processing unit on it. However, over time, to increase computer performance,
+hardware manufacturers added additional cores or processing units to chips. Thus a
+dual-core CPU chip has two processing units while a quad-core CPU chip has four
+processing units. This means that as far as the operating system of the computer is
+concerned, it has multiple CPUs on which it can run programs.
+Running processing at the same time, on multiple CPUs, can substantially
+improve the overall performance of an application.
+
+For example, let us assume that we have a program that will call three inde-
+pendent functions, these functions are:
+• make a backup of the current data held by the program,
+• print the data currently held by the program,
+• run an animation using the current data.
+Let us assume that these functions run sequentially, with the following timings:
+• the backup function takes 13 s,
+• the print function takes 15 s,
+• the animation function takes 10 s.
+This would result in a total of 38 s to perform all three operations. This is illustrated
+graphically below:
+
+
+
+29.4  Distribution
+When implementing a concurrent or parallel solution, where the resulting processes
+run is typically an implementation detail. Conceptually these processes could run
+on the same processor (different cores) of a physical machine, or on a remote machine (what we call: distributed). As
+such distribution is often related to concurrency and
+parallelism: because problems are solved (or processes are executed) by sharing (distributing)
+the work across multiple physical machines.
+However, there is no requirement to distribute work across physical machines,
+indeed in doing so extra work is usually involved.
+To distribute work to a remote machine, data and in many cases code, must be
+transferred and made available to the remote machine. This can result in significant
+delays in running the code remotely and may offset any potential performance
+advantages of using a physically separate computer. As a result many concurrent/
+parallel technologies default to executing code in a separate process on the same machine.
